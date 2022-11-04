@@ -32,9 +32,12 @@ console.log(
   '👋 This message is being logged by "renderer.js", included via webpack'
 );
 
-const cmd = `diskutil unmount "/Volumes/NIKON D300"`;
-// const cmd = `ls -alFh`;
+document
+  .getElementById("btn-ls")
+  .addEventListener("click", () => window.electronAPI.runCommand(`ls -alFh`));
 
 document
-  .getElementById("btn")
-  .addEventListener("click", () => window.electronAPI.runCommand(cmd));
+  .getElementById("btn-unmount")
+  .addEventListener("click", () =>
+    window.electronAPI.runCommand(`diskutil unmount "/Volumes/NIKON D300"`)
+  );

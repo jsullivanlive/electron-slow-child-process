@@ -28,9 +28,10 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-  // run a child process at start of main
-  // runCommand(`diskutil unmount "/Volumes/NIKON D300"`);
-  // runCommand(`ls -al`);
+  // run a child process at start of main to see if it's different later when triggered by ipc
+  runCommand(`ls -al`);
+
+  // listen for ipc to run command
   ipcMain.handle("runCommand", (_, ...args) => runCommand(...args));
 };
 
